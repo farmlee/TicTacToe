@@ -1,0 +1,13 @@
+﻿body
+{
+    font-family: 'Segoe UI', sans-serif
+}
+
+span {
+    font-style: italic
+}
+
+canvas {
+    position: relative;
+    -webkit-animation: canvasAnimation 5s;
+}

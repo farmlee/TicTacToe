@@ -1,0 +1,5 @@
+c:\users\klee\documents\visual studio 2012\Projects\TicTacToe2\TicTacToeScript\bin\TicTacToeScript.dll
+c:\users\klee\documents\visual studio 2012\Projects\TicTacToe2\TicTacToeScript\bin\TicTacToeScript.pdb
+c:\users\klee\documents\visual studio 2012\Projects\TicTacToe2\TicTacToeScript\obj\Debug\TicTacToeScript.dll
+c:\users\klee\documents\visual studio 2012\Projects\TicTacToe2\TicTacToeScript\obj\Debug\TicTacToeScript.pdb
+C:\Users\klee\documents\visual studio 2012\Projects\TicTacToe2\TicTacToeScript\obj\Debug\TicTacToeScript.csprojResolveAssemblyReference.cache
