@@ -3,3 +3,8 @@ c:\users\klee\documents\visual studio 2012\Projects\TicTacToe2\TicTacToeScript\b
 c:\users\klee\documents\visual studio 2012\Projects\TicTacToe2\TicTacToeScript\obj\Debug\TicTacToeScript.dll
 c:\users\klee\documents\visual studio 2012\Projects\TicTacToe2\TicTacToeScript\obj\Debug\TicTacToeScript.pdb
 C:\Users\klee\documents\visual studio 2012\Projects\TicTacToe2\TicTacToeScript\obj\Debug\TicTacToeScript.csprojResolveAssemblyReference.cache
+C:\Users\klee\Documents\New folder\TicTacToe\TicTacToeScript\bin\TicTacToeScript.dll
+C:\Users\klee\Documents\New folder\TicTacToe\TicTacToeScript\bin\TicTacToeScript.pdb
+C:\Users\klee\Documents\New folder\TicTacToe\TicTacToeScript\obj\Debug\TicTacToeScript.csprojResolveAssemblyReference.cache
+C:\Users\klee\Documents\New folder\TicTacToe\TicTacToeScript\obj\Debug\TicTacToeScript.dll
+C:\Users\klee\Documents\New folder\TicTacToe\TicTacToeScript\obj\Debug\TicTacToeScript.pdb

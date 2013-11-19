@@ -22,6 +22,7 @@ function canvasClicked(canvasnumber) {
             turn = 1;
         }
     }
+
     computerturn();
 }
 
@@ -36,27 +37,84 @@ function computerturn() {
         opp = 'O';
     }
 
+    //#1 CHECK TO WIN
+    checkToWinOrBlock(comp, opp, comp);
+
+    //#2 CHECK TO BLOCK
+    checkToWinOrBlock(comp, opp, opp);
+}
+
+function checkToWinOrBlock(comp, opp, compare) {
     for (var a = 0; a < 3; a++) {
         for (var b = 0; b < 3; b++) {
             if (verify(a, b + 1) && verify(a, b + 2)) {
-                if (mark[a][b] == comp && mark[a][b + 1] == comp) {
+                if (mark[a][b] == mark[a][b + 1] && mark[a][b] == compare) {
                     if (mark[a][b + 2] == '') {
                         //win in 3rd box
                         mark[a][b + 2] = comp;
-                        var canvasnumber = a * 3 + b;
+                        var canvasnumber = a * 3 + (b + 2);
                         if (comp == 'X') {
                             markX(canvasnumber);
+                            return;
                         }
                         if (comp == 'O') {
                             markO(canvasnumber);
+                            return;
                         }
                     }
                 }
             }
 
             if (verify(a + 1, b) && verify(a + 2, b)) {
-                if (mark[a][b] == comp && mark[a + 1][b] == comp) {
+                if (mark[a][b] == mark[a + 1][b] && mark[a][b] == compare) {
                     if (mark[a + 2][b] == '') {
+                        //win in 3rd box
+                        mark[a + 2][b] = comp;
+                        var canvasnumber = (a + 2) * 3 + b;
+                        if (comp == 'X') {
+                            markX(canvasnumber);
+                            return;
+                        }
+                        if (comp == 'O') {
+                            markO(canvasnumber);
+                            return;
+                        }
+                    }
+                }
+            }
+
+            if (verify(a + 1, b + 1) && verify(a + 2, b + 2)) {
+                if (mark[a][b] == mark[a + 1][b + 1] && mark[a][b] == compare) {
+                    if (mark[a + 2][b + 2] == '') {
+                        //win in 3rd box
+                        mark[a + 2][b + 2] = comp;
+                        var canvasnumber = (a + 2) * 3 + b + 2;
+                        if (comp == 'X') {
+                            markX(canvasnumber);
+                            return;
+                        }
+                        if (comp == 'O') {
+                            markO(canvasnumber);
+                            return;
+                        }
+                    }
+                }
+            }
+
+            if (verify(a + 1, b - 1) && verify(a + 2, b - 2)) {
+                if (mark[a][b] == mark[a + 1][b - 1] && mark[a][b] == compare) {
+                    if (mark[a + 2][b - 2] == '') {
+                        //win in 3rd box
+                        mark[a + 2][b - 2] = comp;
+                        var canvasnumber = (a + 2) * 3 + b - 2;
+                        if (comp == 'X') {
+                            markX(canvasnumber);
+                            return;
+                        }
+                        if (comp == 'O') {
+                            markO(canvasnumber);
+                            return;
+                        }
                     }
                 }
             }
@@ -112,7 +170,6 @@ function markO(canvasnumber) {
     mark[row][column] = 'O';
 }
 window.onload = function () {
-    //var el = document.getElementById('content');
     setUp();
 };
 //# sourceMappingURL=app.js.map

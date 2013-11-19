@@ -19,13 +19,12 @@ function canvasClicked(canvasnumber: number) {
         //check if X or O
         if (turn == 1) {
             markX(canvasnumber);
-            turn = 0;
         }
         else {
             markO(canvasnumber);
-            turn = 1;
         }
     }
+
     computerturn();
 }
 
@@ -41,36 +40,91 @@ function computerturn() {
         opp = 'O';
     }
 
+    //#1 CHECK TO WIN
+    checkToWinOrBlock(comp, opp, comp);
+
+    //#2 CHECK TO BLOCK
+    checkToWinOrBlock(comp, opp, opp);
+
+}
+
+function checkToWinOrBlock(comp: string, opp: string, compare: string) {
     for (var a = 0; a < 3; a++) {
         for (var b = 0; b < 3; b++) {
-            //check right down cross
-
-            //check right try to win
-            if (verify(a, b + 1) && verify(a,b+2)) {
-                if (mark[a][b] == comp && mark[a][b + 1] == comp) {
-                    if (mark[a][b+2] == '') {
+            //check horizontal
+            if (verify(a, b + 1) && verify(a, b + 2)) {
+                if (mark[a][b] == mark[a][b + 1] && mark[a][b] == compare) {
+                    if (mark[a][b + 2] == '') {
                         //win in 3rd box
                         mark[a][b + 2] = comp;
-                        var canvasnumber = a * 3 + b;
+                        var canvasnumber = a * 3 + (b + 2);
                         if (comp == 'X') {
                             markX(canvasnumber);
+                            return;
                         }
                         if (comp == 'O') {
                             markO(canvasnumber);
+                            return;
                         }
                     }
                 }
             }
 
-            //check down
-            if (verify(a + 1, b) && verify(a+2,b)) {
-                if (mark[a][b] == comp && mark[a + 1][b] == comp) {
+            //check vertical
+            if (verify(a + 1, b) && verify(a + 2, b)) {
+                if (mark[a][b] == mark[a + 1][b] && mark[a][b] == compare) {
                     if (mark[a + 2][b] == '') {
-
+                        //win in 3rd box
+                        mark[a + 2][b] = comp;
+                        var canvasnumber = (a + 2) * 3 + b;
+                        if (comp == 'X') {
+                            markX(canvasnumber);
+                            return;
+                        }
+                        if (comp == 'O') {
+                            markO(canvasnumber);
+                            return;
+                        }
                     }
                 }
             }
-            
+
+            //check right-down-cross
+            if (verify(a + 1, b + 1) && verify(a + 2, b + 2)) {
+                if (mark[a][b] == mark[a + 1][b + 1] && mark[a][b] == compare) {
+                    if (mark[a + 2][b + 2] == '') {
+                        //win in 3rd box
+                        mark[a + 2][b + 2] = comp;
+                        var canvasnumber = (a + 2) * 3 + b + 2;
+                        if (comp == 'X') {
+                            markX(canvasnumber);
+                            return;
+                        }
+                        if (comp == 'O') {
+                            markO(canvasnumber);
+                            return;
+                        }
+                    }
+                }
+            }
+            //check left-down-cross
+            if (verify(a + 1, b - 1) && verify(a + 2, b - 2)) {
+                if (mark[a][b] == mark[a + 1][b - 1] && mark[a][b] == compare) {
+                    if (mark[a + 2][b - 2] == '') {
+                        //win in 3rd box
+                        mark[a + 2][b - 2] = comp;
+                        var canvasnumber = (a + 2) * 3 + b - 2;
+                        if (comp == 'X') {
+                            markX(canvasnumber);
+                            return;
+                        }
+                        if (comp == 'O') {
+                            markO(canvasnumber);
+                            return;
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -105,6 +159,7 @@ function markX(canvasnumber: number) {
     var row = Math.floor(canvasnumber / 3);
     var column = canvasnumber % 3;
     mark[row][column] = 'X';
+    turn = 0;
 }
 
 function markO(canvasnumber: number) {
@@ -119,9 +174,9 @@ function markO(canvasnumber: number) {
     var row = Math.floor(canvasnumber / 3);
     var column = canvasnumber % 3;
     mark[row][column] = 'O';
+    turn = 1;
 }
 window.onload = () => {
-    //var el = document.getElementById('content');
     setUp();
 
 };
