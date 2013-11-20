@@ -41,11 +41,25 @@ function computerturn() {
     }
 
     //#1 CHECK TO WIN
-    checkToWinOrBlock(comp, opp, comp);
+    var win = checkToWinOrBlock(comp, opp, comp);
 
     //#2 CHECK TO BLOCK
-    checkToWinOrBlock(comp, opp, opp);
+    if (win == false) {
+        var block = checkToWinOrBlock(comp, opp, opp);
+    }
 
+    //#3 CREATE FORK
+
+
+    //#4 BLOCK FORK
+
+    //#5 CENTER
+
+    //#6 OPPOSITE CORNER
+
+    //#7 EMPTY CORNER
+
+    //#8 EMPTY SIDE
 }
 
 function checkToWinOrBlock(comp: string, opp: string, compare: string) {
@@ -60,11 +74,39 @@ function checkToWinOrBlock(comp: string, opp: string, compare: string) {
                         var canvasnumber = a * 3 + (b + 2);
                         if (comp == 'X') {
                             markX(canvasnumber);
-                            return;
+                            return true;
                         }
                         if (comp == 'O') {
                             markO(canvasnumber);
-                            return;
+                            return true;
+                        }
+                    }
+                }
+                if (mark[a][b + 1] == mark[a][b + 2] && mark[a][b + 1] == compare) {
+                    if (mark[a][b] == '') {
+                        mark[a][b] = comp;
+                        var canvasnumber = a * 3 + b;
+                        if (comp == 'X') {
+                            markX(canvasnumber);
+                            return true;
+                        }
+                        if (comp == 'O') {
+                            markO(canvasnumber);
+                            return true;
+                        }
+                    }
+                }
+                if (mark[a][b] == mark[a][b + 2] && mark[a][b] == compare) {
+                    if (mark[a][b + 1] == '') {
+                        mark[a][b + 1] = comp;
+                        var canvasnumber = (a * 3) + b + 1;
+                        if (comp == 'X') {
+                            markX(canvasnumber);
+                            return true;
+                        }
+                        if (comp == 'O') {
+                            markO(canvasnumber);
+                            return true;
                         }
                     }
                 }
@@ -79,11 +121,39 @@ function checkToWinOrBlock(comp: string, opp: string, compare: string) {
                         var canvasnumber = (a + 2) * 3 + b;
                         if (comp == 'X') {
                             markX(canvasnumber);
-                            return;
+                            return true;
                         }
                         if (comp == 'O') {
                             markO(canvasnumber);
-                            return;
+                            return true;
+                        }
+                    }
+                }
+                if (mark[a + 1][b] == mark[a + 2][b] && mark[a + 1][b] == compare) {
+                    if (mark[a][b] == '') {
+                        mark[a][b] = comp;
+                        var canvasnumber = (a * 3) + b;
+                        if (comp == 'X') {
+                            markX(canvasnumber);
+                            return true;
+                        }
+                        if (comp == 'O') {
+                            markO(canvasnumber);
+                            return true;
+                        }
+                    }
+                }
+                if (mark[a][b] == mark[a + 2][b] && mark[a][b] == compare) {
+                    if (mark[a + 1][b] == '') {
+                        mark[a + 1][b] = comp;
+                        var canvasnumber = (a + 1) * 3 + b;
+                        if (comp == 'X') {
+                            markX(canvasnumber);
+                            return true;
+                        }
+                        if (comp == 'O') {
+                            markO(canvasnumber);
+                            return true;
                         }
                     }
                 }
@@ -98,11 +168,11 @@ function checkToWinOrBlock(comp: string, opp: string, compare: string) {
                         var canvasnumber = (a + 2) * 3 + b + 2;
                         if (comp == 'X') {
                             markX(canvasnumber);
-                            return;
+                            return true;
                         }
                         if (comp == 'O') {
                             markO(canvasnumber);
-                            return;
+                            return true;
                         }
                     }
                 }
@@ -116,17 +186,24 @@ function checkToWinOrBlock(comp: string, opp: string, compare: string) {
                         var canvasnumber = (a + 2) * 3 + b - 2;
                         if (comp == 'X') {
                             markX(canvasnumber);
-                            return;
+                            return true;
                         }
                         if (comp == 'O') {
                             markO(canvasnumber);
-                            return;
+                            return true;
                         }
                     }
                 }
             }
+            else {
+                return false;
+            }
         }
     }
+}
+
+function createFork() {
+
 }
 
 function verify(row: number, column: number) {
@@ -176,6 +253,9 @@ function markO(canvasnumber: number) {
     mark[row][column] = 'O';
     turn = 1;
 }
+
+
+
 window.onload = () => {
     setUp();
 
