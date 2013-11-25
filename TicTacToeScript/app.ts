@@ -48,6 +48,8 @@ function computerturn() {
         var block = checkToWinOrBlock(comp, opp, opp);
     }
 
+    
+
     //#3 CREATE FORK
 
 
@@ -202,8 +204,27 @@ function checkToWinOrBlock(comp: string, opp: string, compare: string) {
     }
 }
 
-function createFork() {
+function createFork(input: string) {
+    var check = input;
+    for (var a = 0; a < 3; a++) {
+        for (var b = 0; b < 3; b++) {
+            if (mark[a][b] == '') {
+                var WinPositions = countFork(a, b, check);
+            }
+        }
+    }
+}
 
+function countFork(row: number, column: number, check: string) {
+    mark[row][column] = check;
+    for (var a = 0; a < 3; a++) {
+        for (var b = 0; b < 3; b++) {
+
+        }
+    }
+
+
+    mark[row][column] = '';
 }
 
 function verify(row: number, column: number) {

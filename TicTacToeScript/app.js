@@ -185,7 +185,25 @@ function checkToWinOrBlock(comp, opp, compare) {
     }
 }
 
-function createFork() {
+function createFork(input) {
+    var check = input;
+    for (var a = 0; a < 3; a++) {
+        for (var b = 0; b < 3; b++) {
+            if (mark[a][b] == '') {
+                var WinPositions = countFork(a, b, check);
+            }
+        }
+    }
+}
+
+function countFork(row, column, check) {
+    mark[row][column] = check;
+    for (var a = 0; a < 3; a++) {
+        for (var b = 0; b < 3; b++) {
+        }
+    }
+
+    mark[row][column] = '';
 }
 
 function verify(row, column) {
